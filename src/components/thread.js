@@ -20,7 +20,7 @@ export function Thread(props) {
 }
 
 const mapStateToProps = (state, props) => ({
-  thread: state.thread,
+  thread: state.hnData.thread,
   threadId: props.match.params.threadId,
 });
 

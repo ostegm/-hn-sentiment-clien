@@ -15,7 +15,7 @@ export function ThreadStats(props) {
 }
 
 const mapStateToProps = (state, props) => ({
-  thread: state.thread,
+  thread: state.hnData.thread,
 });
 
 export default connect(mapStateToProps)(ThreadStats);
