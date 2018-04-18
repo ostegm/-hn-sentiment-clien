@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { hnReducer } from './reducers';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
+import { hnReducer } from './reducers';
 
 const store = createStore(
   combineReducers({

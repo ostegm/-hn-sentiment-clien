@@ -13,10 +13,10 @@ export default function App() {
       <div className="app">
         <NavBar />
         <main>
-           <Switch>
+          <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/threads/:threadId" component={Thread} />
-            <Route path="*" component={Notfound}/>
+            <Route path="*" component={Notfound} />
           </Switch>
         </main>
       </div>
