@@ -3,7 +3,13 @@ import * as actions from '../actions';
 const initialState = {
   loading: false,
   error: null,
-  thread: null,
+  thread: {
+    by: '',
+    title: '',
+    descendants: 0,
+    id: 0,
+    kids: [],
+  },
 };
 
 export const hnReducer = (state = initialState, action) => {
