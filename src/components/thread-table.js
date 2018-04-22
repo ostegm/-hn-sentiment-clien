@@ -42,56 +42,51 @@ const colorizeSentimentText = (row) => {
   );
 };
 
-
-export class ThreadTable extends React.Component {
-  getColumns() {
-    return [
-      {
-        Header: 'Posted (UTC)',
-        id: 'posted',
-        accessor: k => parseTimestamp(k.time),
-        sortMethod: (a, b) => {
-          return ((new Date(a)) > (new Date(b))) ? 1 : -1;
-        },
-      },
-      {
-        Header: 'Comment',
-        id: 'comment',
-        accessor: k => cleanAndShortenText(k.text),
-      },
-      {
-        Header: 'Sentiment',
-        id: 'sentiment',
-        accessor: k => formatScore(k.documentSentiment.score),
-        Cell: row => colorizeSentimentText(row),
-        sortMethod: (a, b) => {
-          return parseFloat(a) > parseFloat(b) ? 1 : -1;
-        },
-      },
-      {
-        Header: 'Child Comments',
-        id: 'childComments',
-        accessor: k => k.kids ? k.kids.length : 0,
-      },
-      {
-        Header: 'SubThread',
-        id: 'subThread',
-        accessor: k => this.makeLink(k),
-      },
-    ];
-  };
-  
-  makeLink(kid) {
-    const childComments = kid.kids ? kid.kids.length : 0;
-    if (childComments) {
-      return <Link to={`/threads/${kid.id}`}>View subthread</Link>
-    }
-    return
+const makeLink = (kid) => {
+  const childComments = kid.kids ? kid.kids.length : 0;
+  if (childComments) {
+    return <Link to={`/threads/${kid.id}`}>View subthread</Link>;
   }
+  return;
+};
 
-  render() {
-    return <ReactTable data={this.props.thread.kids} columns={this.getColumns()}/>;
-  }
+const tableColumns = [
+  {
+    Header: 'Posted (UTC)',
+    id: 'posted',
+    accessor: k => parseTimestamp(k.time),
+    sortMethod: (a, b) => {
+      return ((new Date(a)) > (new Date(b))) ? 1 : -1;
+    },
+  },
+  {
+    Header: 'Comment',
+    id: 'comment',
+    accessor: k => cleanAndShortenText(k.text),
+  },
+  {
+    Header: 'Sentiment',
+    id: 'sentiment',
+    accessor: k => formatScore(k.documentSentiment.score),
+    Cell: row => colorizeSentimentText(row),
+    sortMethod: (a, b) => {
+      return parseFloat(a) > parseFloat(b) ? 1 : -1;
+    },
+  },
+  {
+    Header: 'Child Comments',
+    id: 'childComments',
+    accessor: k => k.kids ? k.kids.length : 0,
+  },
+  {
+    Header: 'SubThread',
+    id: 'subThread',
+    accessor: k => makeLink(k),
+  },
+];
+
+export function ThreadTable(props) {
+  return <ReactTable data={props.thread.kids} columns={tableColumns} />;
 }
 
 const mapStateToProps = (state, props) => ({

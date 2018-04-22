@@ -1,16 +1,49 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Card, Elevation } from "@blueprintjs/core";
+import { Container, Row, Col } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+const formatScore = (score) => {
+  return (score * 100).toFixed(0) + "%";
+};
+
+const getColor = (sentiment) => {
+  // Rescale from (-100, 100) to (0, 1).
+  const rescaled = ((sentiment + 100) / 200);
+  const colorValue = rescaled * 120;
+  return `hsl(${colorValue}, 100%, 50%)`;
+};
 
 export function ThreadStats(props) {
+  const sentimentValue = formatScore(props.thread.avgSentiment)
+  const cssObject = {
+    color: getColor(parseFloat(sentimentValue)),
+    transition: 'all .3s ease',
+  }; 
   return (
-    <div className="parent-data">
-      <div>Total Descendent Comments: {props.thread.descendants}</div>
-      <div>Direct Descendant Comments: {props.thread.kids.length}</div>
-      <div>Average Word Count of Direct descendants: {props.thread.avgWordCount} words</div>
-      <div>Average Setiment of Direct descendants: {props.thread.avgSentiment}</div>
-      <div>Average Magnitude of Direct descendants: {props.thread.avgMagnitude}</div>
-    </div>
+    <Container>
+      <Row>
+        <Col xs='3'>
+          <Card interactive={false} elevation={Elevation.FIVE}>
+              <h5>Average Setiment:</h5>
+              <span style={cssObject}>&#x25cf;</span>{sentimentValue}
+          </Card>
+        </Col>
+        <Col xs='3'>
+          <Card interactive={false} elevation={Elevation.FIVE}>
+              <h5>Total Comments</h5>
+              <span>{props.thread.descendants}</span>
+          </Card>
+        </Col>
+        <Col xs='3'>
+          <Card interactive={false} elevation={Elevation.FIVE}>
+              <h5>Direct Responses</h5>
+              <span>{props.thread.kids.length}</span>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
