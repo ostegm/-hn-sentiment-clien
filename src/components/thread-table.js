@@ -9,7 +9,7 @@ const cleanAndShortenText = (text) => {
   cleaned = cleaned.replace(/<p.*>/gi, "\n");
   cleaned = cleaned.replace(/<a.*href="(.*?)".*>(.*?)<\/a>/gi, "");
   cleaned = cleaned.replace(/<(?:.|\s)*?>/g, "");
-  return cleaned//cleaned.split(/\s+/).slice(0, 20).join(' ') + '...';
+  return cleaned
 };
 
 const parseTimestamp = (timestamp) => {
@@ -19,7 +19,28 @@ const parseTimestamp = (timestamp) => {
 
 const formatScore = (score) => {
   return (score * 100).toFixed(0) + "%";
-}
+};
+
+const getColor = (sentiment) => {
+  // Rescale from (-100, 100) to (0, 1).
+  const rescaled = ((sentiment + 100) / 200);
+  const colorValue = rescaled * 120;
+  return `hsl(${colorValue}, 100%, 50%)`
+};
+
+
+const colorizeSentimentText = (row) => {
+  const cssObject = {
+    color: getColor(parseFloat(row.value)),
+    transition: 'all .3s ease',
+  };
+  return (
+    <span>
+      <span style={cssObject}>&#x25cf;</span>
+      { row.value }
+    </span>
+  );
+};
 
 
 export class ThreadTable extends React.Component {
@@ -29,6 +50,9 @@ export class ThreadTable extends React.Component {
         Header: 'Posted (UTC)',
         id: 'posted',
         accessor: k => parseTimestamp(k.time),
+        sortMethod: (a, b) => {
+          return ((new Date(a)) > (new Date(b))) ? 1 : -1;
+        },
       },
       {
         Header: 'Comment',
@@ -39,6 +63,10 @@ export class ThreadTable extends React.Component {
         Header: 'Sentiment',
         id: 'sentiment',
         accessor: k => formatScore(k.documentSentiment.score),
+        Cell: row => colorizeSentimentText(row),
+        sortMethod: (a, b) => {
+          return parseFloat(a) > parseFloat(b) ? 1 : -1;
+        },
       },
       {
         Header: 'Child Comments',

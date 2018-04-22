@@ -44,7 +44,7 @@ export class SearchBar extends React.Component {
             className="searchButton"
             type="submit"
             disabled={this.props.pristine || this.props.submitting}>
-            Analyze Setiment
+            Analyze Sentiment
           </button>
         </form>
       </div>
