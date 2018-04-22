@@ -1,26 +1,27 @@
 import React from 'react';
+import Spinner from 'react-spinkit';
 import { connect } from 'react-redux';
 import ThreadStats from './thread-stats';
-import ThreadChild from './thread-child';
+import ThreadTable from './thread-table';
 import { fetchThread } from '../actions';
 
 export class Thread extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(fetchThread(this.props.threadId));
   }
 
   render() {
-    const kids = this.props.thread.kids.map((kid, index) => {
-      return <ThreadChild key={index} kid={kid}/>;
-    });
+   if (this.props.loading) {
+      return <Spinner fadeIn='none' />;
+    } else if (this.props.error) {
+      return <p>Oops - Somethign went wrong.</p>
+    }
+    const titleText = this.props.thread.title || this.props.thread.text;
     return (
       <div>
-        <h2>{this.props.thread.title}</h2>
+        <h2>{titleText}</h2>
         <ThreadStats />
-        <ul>
-          {kids}
-        </ul>
-
+        <ThreadTable />
       </div>
     );
   }
