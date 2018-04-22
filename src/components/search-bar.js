@@ -1,14 +1,16 @@
 import React from 'react';
-import { reduxForm, Field, focus } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
+import { withRouter } from 'react-router-dom';
 import Input from './input';
 import { required, nonEmpty, webAddress } from '../validators';
-import './search-bar.css'
+import './search-bar.css';
 
 export class SearchBar extends React.Component {
   onSubmit(values) {
-    console.log('Form submited with values: ', values)
-    this.props.history.push('/');
+    const threadId = values.hnAddress.split('item?id=')[1];
+    this.props.history.push(`/threads/${threadId}`);
   }
+
   render() {
     let successMessage;
     if (this.props.submitSucceeded) {
@@ -30,7 +32,7 @@ export class SearchBar extends React.Component {
       <div className="wrap">
         {successMessage}
         {errorMessage}
-        <form className="search" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+        <form className="search" onSubmit={this.props.handleSubmit(v => this.onSubmit(v))}>
           <Field
             className="searchTerm"
             name="hnAddress"
@@ -52,8 +54,4 @@ export class SearchBar extends React.Component {
   }
 }
 
-export default reduxForm({
-  form: 'hnSearchBar',
-  onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('hnSearchBar', Object.keys(errors)[0])),
-})(SearchBar);
+export default withRouter(reduxForm({ form: 'hnSearchBar' })(SearchBar));
