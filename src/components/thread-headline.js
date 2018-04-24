@@ -1,21 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
-import './thread-headline.css'
+import './thread-headline.css';
 
-const createMarkup = (text) => ({ __html: text });
+const createMarkup = text => ({ __html: text });
 
 const getHnLink = (id) => {
   return (
-    <a
-      href={`https://news.ycombinator.com/item?id=${id}`}>View on Hacker News
-    </a>
-    )
-}
+    <a href={`https://news.ycombinator.com/item?id=${id}`}>View on Hacker News</a>
+  );
+};
 
 export function ThreadHeadLine(props) {
-  const posted = (new Date(props.thread.time * 1000)).toString()
+  const posted = (new Date(props.thread.time * 1000)).toString();
   if (props.thread.title) {
     const hnLink = getHnLink(props.thread.id);
     console.log(hnLink);
@@ -41,9 +38,9 @@ export function ThreadHeadLine(props) {
           <div className="by-line">
             <p>{`Posted: ${posted}`}</p>
           </div>
-          <div 
+          <div
             className="comment-text"
-            dangerouslySetInnerHTML={createMarkup(props.thread.text)} 
+            dangerouslySetInnerHTML={createMarkup(props.thread.text)}
           />
         </Col>
       </Row>

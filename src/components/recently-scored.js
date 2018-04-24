@@ -7,7 +7,7 @@ import './recently-scored.css';
 const makeLink = (title, id, index) => {
   const maxLen = window.innerWidth > 600 ? 10 : 4;
   if (title.split(/\s+/).length > maxLen) {
-    title = (title.split(/\s+/).slice(0,maxLen).join(' ') + '...')
+    title = (title.split(/\s+/).slice(0,maxLen).join(' ') + '...');
   }
   return (
     <li key={index}>

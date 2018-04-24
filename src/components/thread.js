@@ -8,7 +8,7 @@ import ThreadStats from './thread-stats';
 import ThreadTrend from './thread-trend';
 import ThreadTable from './thread-table';
 import { fetchThread } from '../actions';
-import './thread.css'
+import './thread.css';
 
 
 export class Thread extends React.Component {
@@ -22,7 +22,7 @@ export class Thread extends React.Component {
       this.props.dispatch(fetchThread(nextProps.threadId));
     }
   }
-          
+     
   render() {
     if (this.props.loading) {
       return (
@@ -30,13 +30,13 @@ export class Thread extends React.Component {
           <h5>Hold tight, we're fetching your content...</h5>
           <Spinner />
         </Container>
-      )
+      );
     } else if (this.props.error) {
       return (
         <Container className="loading">
           <h5>Oops - Somethign went wrong...try another thread.</h5>
         </Container>
-        );
+      );
     }
     return (
       <Container>

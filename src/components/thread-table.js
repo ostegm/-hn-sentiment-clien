@@ -26,7 +26,7 @@ const getColor = (sentiment) => {
 const colorizeSentimentText = (row) => {
   const cssObject = {
     color: getColor(parseFloat(row.value)),
-    'margin': '0px 20px',
+    margin: '0px 20px',
   };
   return (
     <span>
