@@ -1,3 +1,9 @@
 thread-container: {
   width: 60%;
+  margin: auto;
+}
+
+.loading: {
+  text-align: center;
+  margin: 60px auto 60px;
 }

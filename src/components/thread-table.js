@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import TextPopover from './text-popover';
+import './thread-table.css';
 
 const parseTimestamp = (timestamp) => {
   const dt = new Date(timestamp * 1000);
@@ -67,7 +68,12 @@ const tableColumns = [
 ];
 
 export function ThreadTable(props) {
-  return <ReactTable data={props.thread.kids} columns={tableColumns} />;
+  return (
+    <div className="thread-table">
+      Test
+      <ReactTable data={props.thread.kids} columns={tableColumns} />
+    </div>
+  );
 }
 
 const mapStateToProps = (state, props) => ({

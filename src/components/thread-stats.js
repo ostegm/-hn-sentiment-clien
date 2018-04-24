@@ -34,7 +34,7 @@ export function ThreadStats(props) {
         <Col xs='3'>
           <Card interactive={false} elevation={Elevation.FIVE}>
               <h5>Total Comments</h5>
-              <span>{props.thread.descendants}</span>
+              <span>{props.thread.descendants || props.thread.kids.length}</span>
           </Card>
         </Col>
         <Col xs='3'>

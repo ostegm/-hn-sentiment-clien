@@ -48,7 +48,7 @@ export class TextPopover extends React.Component {
       >
         <div intent={Intent.PRIMARY}>{shortenText(this.props.kid.text, this.props.kid.id)}</div>
         <div>
-          <h5>Comment</h5>
+          <h5>{`Comment by ${this.props.kid.by}`}</h5>
           <div dangerouslySetInnerHTML={createMarkup(this.props.kid.text)} />
           {this.makeSubThreadButton()}
           <Button className="pt-popover-dismiss">Dismiss</Button>

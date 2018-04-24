@@ -1,14 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import logo from './color_logo_transparent.svg';
+import './nav-bar.css';
 
-export function NavBar(props) {
+export default function NavBar() {
   return (
     <nav className="nav-bar">
-      <h1><Link to="/">Home</Link></h1>
-      <Link to="/threads/8863">Test Thread</Link>
+      <Link to="/"><img src={logo} alt="dabbl.io logo" className="app-logo" /></Link>
     </nav>
   );
 }
-
-export default connect()(NavBar);

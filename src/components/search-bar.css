@@ -3,16 +3,12 @@
   position: relative
 }
 
-.message-error {
-  color: red;
-}
-
 input[type="text"] {
   float: left;
   width: 100%;
   border: 3px solid #00B4CC;
   padding: 5px;
-  height: 20px;
+  height: 40px;
   border-radius: 5px;
   outline: none;
   color: #696969;
@@ -30,11 +26,23 @@ input[type="text"] {
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 20px;
+  text-transform: uppercase;
+  font-size: 18px;
 }
 
 /*Resize the wrap to see the search bar change!*/
 .wrap{
   margin: 1em auto 0 auto;
   width: 30%;
+}
+
+message-error {
+  color: red;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .wrap {
+      width: 90%;
+    }
 }

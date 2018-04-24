@@ -1,0 +1,10 @@
+.thread-trend {
+  width: 60%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .thread-trend {
+      width: 90%;
+    }
+}

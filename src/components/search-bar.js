@@ -12,25 +12,15 @@ export class SearchBar extends React.Component {
   }
 
   render() {
-    let successMessage;
-    if (this.props.submitSucceeded) {
-      successMessage = (
-        <div className="message message-success">
-          Message submitted successfully
-        </div>
-      );
-    }
-
     let errorMessage;
     if (this.props.error) {
       errorMessage = (
-        <div className="message message-error">{this.props.error}</div>
+        <div className="message-error">{this.props.error}</div>
       );
     }
 
     return (
       <div className="wrap">
-        {successMessage}
         {errorMessage}
         <form className="search" onSubmit={this.props.handleSubmit(v => this.onSubmit(v))}>
           <Field
@@ -39,7 +29,7 @@ export class SearchBar extends React.Component {
             type="text"
             placeholder="https://news.ycombinator.com/item?id=8863"
             component={Input}
-            label="Enter a Hacker News URL"
+            label="Paste a Hacker News URL below to find out"
             validate={[required, nonEmpty, webAddress]}
           />
           <button

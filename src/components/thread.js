@@ -24,7 +24,11 @@ export class Thread extends React.Component {
 
   render() {
     if (this.props.loading) {
-      return <Spinner fadeIn='none' />;
+      return (
+        <div className="loading">
+          <Spinner fadeIn='none' />
+        </div>
+      )
     } else if (this.props.error) {
       return <p>Oops - Somethign went wrong.</p>;
     }
