@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Card, Elevation } from "@blueprintjs/core";
 import { Container, Row, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './thread-stats.css';
 
 const formatScore = (score) => {
   return (score * 100).toFixed(0) + "%";
@@ -26,7 +27,7 @@ export function ThreadStats(props) {
       <Row>
         <Col xs='3'>
           <Card interactive={false} elevation={Elevation.FIVE}>
-              <h5>Average Sentiment:</h5>
+              <h5>Average Sentiment</h5>
               <span style={cssObject}>&#x25cf;</span>{sentimentValue}
           </Card>
         </Col>

@@ -3,14 +3,18 @@ import { withRouter } from 'react-router-dom';
 import { Button, Intent, Popover, PopoverInteractionKind, Position } from "@blueprintjs/core";
 import './text-popover.css'
 
-const shortenText = (text) => {
+const shortenText = (text, threadId) => {
   // Removes URLs and keeps the first 6 words.
   let cleaned = text.replace(/<br>/gi, '\n');
   cleaned = cleaned.replace(/<p.*>/gi, '\n');
   cleaned = cleaned.replace(/<a.*href="(.*?)".*>(.*?)<\/a>/gi, '');
   cleaned = cleaned.replace(/<(?:.|\s)*?>/g, '');
   const firstFewWords = (cleaned.split(/\s+/).slice(0,6).join(' ') + '...')
-  return firstFewWords;
+  return (
+    <a href={`/threads/${threadId}`} 
+      onClick={e => e.preventDefault()}>{firstFewWords}
+    </a>
+    );
 };
 
 const createMarkup = (text) => ({ __html: text });
@@ -39,11 +43,13 @@ export class TextPopover extends React.Component {
   render() {
     return (
       <Popover
-        interactionKind={PopoverInteractionKind.HOVER}
+        interactionKind={PopoverInteractionKind.CLICK}
         popoverClassName="pt-popover-content-sizing"
-        position={Position.RIGHT}
+        position={Position.AUTO}
+        autoFocus={false}
+        hoverCloseDelay={1000}
       >
-        <div intent={Intent.PRIMARY}>{shortenText(this.props.kid.text)}</div>
+        <div intent={Intent.PRIMARY}>{shortenText(this.props.kid.text, this.props.kid.id)}</div>
         <div>
           <h5>Comment</h5>
           <div dangerouslySetInnerHTML={createMarkup(this.props.kid.text)} />

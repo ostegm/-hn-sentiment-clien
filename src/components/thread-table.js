@@ -46,7 +46,7 @@ const tableColumns = [
     },
   },
   {
-    Header: 'Comment (hover to view more)',
+    Header: 'Comment (click to view more)',
     id: 'comment',
     accessor: k => <TextPopover kid={k}/>,
   },
