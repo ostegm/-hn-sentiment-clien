@@ -20,9 +20,6 @@ const shortenText = (text, threadId) => {
 const createMarkup = (text) => ({ __html: text });
 
 export class TextPopover extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   viewSubthread() {
     this.props.history.push(`/threads/${this.props.kid.id}`);
