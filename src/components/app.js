@@ -5,6 +5,7 @@ import Home from './home';
 import NavBar from './nav-bar';
 import Thread from './thread';
 import Notfound from './not-found';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 export default function App() {

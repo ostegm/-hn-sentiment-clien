@@ -1,3 +1,15 @@
 .thread-headline {
   margin: 60px auto 40px;
+  text-align: center;
+}
+
+.comment-text {
+  text-align: left;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .thread-headline h3 {
+    font-size: 20px;
+  }
 }

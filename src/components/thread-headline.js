@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './thread-headline.css'
 
 const createMarkup = (text) => ({ __html: text });
@@ -13,7 +12,7 @@ export function ThreadHeadLine(props) {
       <Container className="thread-headline">
         <Row>
           <Col>
-            <h5>{props.thread.title}</h5>
+            <h3>{props.thread.title}</h3>
             <div className="by-line">
               <p>{`By: ${props.thread.by} || Posted: ${posted}`}</p>
             </div>
@@ -26,11 +25,14 @@ export function ThreadHeadLine(props) {
     <Container className="thread-headline">
       <Row>
         <Col>
-          <h5>{`Comment By ${props.thread.by}`}</h5>
+          <h3>{`Comment By ${props.thread.by}`}</h3>
           <div className="by-line">
             <p>{`Posted: ${posted}`}</p>
           </div>
-          <div dangerouslySetInnerHTML={createMarkup(props.thread.text)} />
+          <div 
+            className="comment-text"
+            dangerouslySetInnerHTML={createMarkup(props.thread.text)} 
+          />
         </Col>
       </Row>
     </Container>

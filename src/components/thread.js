@@ -1,7 +1,8 @@
 import React from 'react';
-import Spinner from 'react-spinkit';
+import { Spinner } from "@blueprintjs/core";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Container } from 'reactstrap';
 import ThreadHeadline from './thread-headline';
 import ThreadStats from './thread-stats';
 import ThreadTrend from './thread-trend';
@@ -21,24 +22,25 @@ export class Thread extends React.Component {
       this.props.dispatch(fetchThread(nextProps.threadId));
     }
   }
-
+          
   render() {
     if (this.props.loading) {
       return (
-        <div className="loading">
-          <Spinner fadeIn='none' />
-        </div>
+        <Container className="loading">
+          <h5>Hold tight, we're fetching your content...</h5>
+          <Spinner />
+        </Container>
       )
     } else if (this.props.error) {
       return <p>Oops - Somethign went wrong.</p>;
     }
     return (
-      <div className="thread-container">
+      <Container>
         <ThreadHeadline />
         <ThreadStats />
         <ThreadTrend />
         <ThreadTable />
-      </div>
+      </Container>
     );
   }
 }

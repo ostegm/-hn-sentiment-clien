@@ -1,9 +1,6 @@
-thread-container: {
-  width: 60%;
-  margin: auto;
-}
-
-.loading: {
+.loading {
+  align-self: center;
   text-align: center;
-  margin: 60px auto 60px;
+  width: 50%;
+  padding: 74px 10px 10px 10px;
 }

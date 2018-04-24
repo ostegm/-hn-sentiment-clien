@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card, Elevation } from "@blueprintjs/core";
 import { Container, Row, Col } from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './thread-stats.css';
 
 const formatScore = (score) => {
@@ -20,24 +19,24 @@ export function ThreadStats(props) {
   const sentimentValue = formatScore(props.thread.avgSentiment)
   const cssObject = {
     color: getColor(parseFloat(sentimentValue)),
-    transition: 'all .3s ease',
+    'margin-right': '5px',
   };
   return (
     <Container>
       <Row>
-        <Col xs='3'>
+        <Col xs='4'>
           <Card interactive={false} elevation={Elevation.FIVE}>
               <h5>Average Sentiment</h5>
               <span style={cssObject}>&#x25cf;</span>{sentimentValue}
           </Card>
         </Col>
-        <Col xs='3'>
+        <Col xs='4'>
           <Card interactive={false} elevation={Elevation.FIVE}>
               <h5>Total Comments</h5>
               <span>{props.thread.descendants || props.thread.kids.length}</span>
           </Card>
         </Col>
-        <Col xs='3'>
+        <Col xs='4'>
           <Card interactive={false} elevation={Elevation.FIVE}>
               <h5>Direct Responses</h5>
               <span>{props.thread.kids.length}</span>

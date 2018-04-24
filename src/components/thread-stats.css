@@ -1,0 +1,10 @@
+.pt-card {
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .pt-card > h5 {
+    font-size: .7em;
+  }
+}
+

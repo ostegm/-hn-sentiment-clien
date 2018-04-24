@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ReactTable from 'react-table';
+import { Container } from 'reactstrap';
 import 'react-table/react-table.css';
 import TextPopover from './text-popover';
-import './thread-table.css';
 
 const parseTimestamp = (timestamp) => {
   const dt = new Date(timestamp * 1000);
@@ -26,7 +26,7 @@ const getColor = (sentiment) => {
 const colorizeSentimentText = (row) => {
   const cssObject = {
     color: getColor(parseFloat(row.value)),
-    transition: 'all .3s ease',
+    'margin': '0px 20px',
   };
   return (
     <span>
@@ -69,10 +69,13 @@ const tableColumns = [
 
 export function ThreadTable(props) {
   return (
-    <div className="thread-table">
-      Test
-      <ReactTable data={props.thread.kids} columns={tableColumns} />
-    </div>
+    <Container className="thread-table">
+      <ReactTable
+        data={props.thread.kids}
+        columns={tableColumns} 
+        className="-striped -highlight"
+      />
+    </Container>
   );
 }
 
