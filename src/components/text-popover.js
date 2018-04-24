@@ -33,7 +33,7 @@ export class TextPopover extends React.Component {
         </Button>
       );
     }
-    return null
+    return null;
   }
 
   render() {
