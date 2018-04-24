@@ -74,6 +74,7 @@ export function ThreadTable(props) {
         data={props.thread.kids}
         columns={tableColumns} 
         className="-striped -highlight"
+        defaultPageSize={10}
       />
     </Container>
   );

@@ -32,7 +32,11 @@ export class Thread extends React.Component {
         </Container>
       )
     } else if (this.props.error) {
-      return <p>Oops - Somethign went wrong.</p>;
+      return (
+        <Container className="loading">
+          <h5>Oops - Somethign went wrong...try another thread.</h5>
+        </Container>
+        );
     }
     return (
       <Container>

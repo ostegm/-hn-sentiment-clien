@@ -15,6 +15,15 @@ export const fetchThreadSuccess = (thread) => {
   }
 };
 
+export const FETCH_RECENT_SUCCESS = 'FETCH_RECENT_SUCCESS';
+export const fetchRecentSuccess = (recentThreads) => {
+  return {
+    type: FETCH_RECENT_SUCCESS,
+    recentThreads,
+  }
+};
+
+
 export const FETCH_THREAD_ERROR = 'FETCH_THREAD_ERROR';
 export const fetchThreadError = (error) => ({
   type: FETCH_THREAD_ERROR,
@@ -24,11 +33,25 @@ export const fetchThreadError = (error) => ({
 export const fetchThread = (threadId) => (dispatch, getState) => {
   dispatch(fetchThreadRequest())
   return fetch(`${API_BASE_URL}/threads/${threadId}`, {
-      method: 'GET',
+    method: 'GET',
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then((thread) => dispatch(fetchThreadSuccess(thread)))
+    .catch(err => {
+        dispatch(fetchThreadError(err));
+    });
+};
+
+
+export const fetchRecent = () => (dispatch, getState) => {
+  dispatch(fetchThreadRequest());
+  return fetch(`${API_BASE_URL}/threads/recent`, {
+    method: 'GET',
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then((recentThreads) => dispatch(fetchRecentSuccess(recentThreads)))
     .catch(err => {
         dispatch(fetchThreadError(err));
     });

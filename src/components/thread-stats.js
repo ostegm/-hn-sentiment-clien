@@ -19,7 +19,7 @@ export function ThreadStats(props) {
   const sentimentValue = formatScore(props.thread.avgSentiment)
   const cssObject = {
     color: getColor(parseFloat(sentimentValue)),
-    'margin-right': '5px',
+    'marginRight': '5px',
   };
   return (
     <Container>

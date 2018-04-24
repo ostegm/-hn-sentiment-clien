@@ -10,6 +10,7 @@ const initialState = {
     id: 0,
     kids: [],
   },
+  recentThreads: [],
 };
 
 export const hnReducer = (state = initialState, action) => {
@@ -21,6 +22,12 @@ export const hnReducer = (state = initialState, action) => {
   } else if (action.type === actions.FETCH_THREAD_SUCCESS) {
     return Object.assign({}, state, {
       thread: action.thread,
+      loading: false,
+      error: null,
+    });
+  } else if (action.type === actions.FETCH_RECENT_SUCCESS) {
+    return Object.assign({}, state, {
+      recentThreads: action.recentThreads,
       loading: false,
       error: null,
     });
