@@ -1,14 +1,22 @@
 import React from 'react';
 import Spinner from 'react-spinkit';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import ThreadStats from './thread-stats';
 import ThreadTrend from './thread-trend';
 import ThreadTable from './thread-table';
 import { fetchThread } from '../actions';
 
 export class Thread extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(fetchThread(this.props.threadId));
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.threadId !== nextProps.threadId) {
+      console.log('Dispatching.')
+      this.props.dispatch(fetchThread(nextProps.threadId));
+    }
   }
 
   render() {
@@ -42,4 +50,4 @@ const mapStateToProps = (state, props) => {
   }
 };
 
-export default connect(mapStateToProps)(Thread);
+export default withRouter(connect(mapStateToProps)(Thread));

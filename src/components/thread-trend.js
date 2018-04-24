@@ -6,7 +6,7 @@ export const ThreadTrend = (props) => {
   const scores = props.thread.kids.map((k) => {
     return parseFloat(k.documentSentiment.score)
   });
-  if (scores.length) {
+  if (scores.length > 1) {
     return (
       <Trend
         smooth

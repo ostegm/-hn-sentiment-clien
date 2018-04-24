@@ -20,13 +20,13 @@ export function ThreadStats(props) {
   const cssObject = {
     color: getColor(parseFloat(sentimentValue)),
     transition: 'all .3s ease',
-  }; 
+  };
   return (
     <Container>
       <Row>
         <Col xs='3'>
           <Card interactive={false} elevation={Elevation.FIVE}>
-              <h5>Average Setiment:</h5>
+              <h5>Average Sentiment:</h5>
               <span style={cssObject}>&#x25cf;</span>{sentimentValue}
           </Card>
         </Col>
