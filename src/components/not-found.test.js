@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ThreadState } from './thread-state';
+import NotFound from './not-found';
 
-describe('ThreadState component tests', () => {
+describe('NotFound component tests', () => {
 
   it('Should render without crashing', () => {
-    shallow(<ThreadState />);
+    shallow(<NotFound />);
   });
 
 });

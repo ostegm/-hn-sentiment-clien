@@ -15,7 +15,6 @@ export function ThreadHeadLine(props) {
   const posted = (new Date(props.thread.time * 1000)).toString();
   if (props.thread.title) {
     const hnLink = getHnLink(props.thread.id);
-    console.log(hnLink);
     return (
       <Container className="thread-headline">
         <Row>
