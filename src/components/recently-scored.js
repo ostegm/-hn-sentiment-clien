@@ -18,7 +18,6 @@ const makeLink = (title, id, index) => {
 
 export class RecentlyScored extends React.Component {
   componentWillMount() {
-    console.log();
     this.props.dispatch(fetchRecent());
   };
     
