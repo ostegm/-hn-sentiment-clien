@@ -9,7 +9,7 @@ const shortenText = (text, threadId) => {
   cleaned = cleaned.replace(/<p.*>/gi, '\n');
   cleaned = cleaned.replace(/<a.*href="(.*?)".*>(.*?)<\/a>/gi, '');
   cleaned = cleaned.replace(/<(?:.|\s)*?>/g, '');
-  const firstFewWords = (cleaned.split(/\s+/).slice(0,6).join(' ') + '...');
+  const firstFewWords = unescape(cleaned.split(/\s+/).slice(0,6).join(' ') + '...');
   return (
     <a href={`/threads/${threadId}`} 
       onClick={e => e.preventDefault()}>{firstFewWords}

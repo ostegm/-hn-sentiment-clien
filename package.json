@@ -7,6 +7,7 @@
     "bootstrap": "^4.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "node-gyp": "^3.6.2",
     "react": "^16.3.1",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.3.1",
