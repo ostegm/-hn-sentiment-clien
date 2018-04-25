@@ -1,6 +1,6 @@
 # Hacker News Sentiment Client
 
-## Live app [here](https://www.dabbl.io/)!
+Live app [here](https://www.dabbl.io/)!
 
 ## About
 Helps you understand how users are responding to a comment on Hacker News using natural language processing and machine learning. This client is built using React/Redux and relies on a [node server](https://github.com/ostegm/hn-sentiment-server)
