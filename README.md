@@ -1,19 +1,13 @@
 # Hacker News Sentiment Client
 
-Helps you understand how users are responding to a comment on Hacker News using natural language processing and machine learning. This client is build in React and works with a node server.
+## Live app [here](https://www.dabbl.io/)!
 
-# Todo
-## Landing Page: 
-1. Search Bar (paste HN Link -> go to thread page.)
-2. How it works section
+## About
+Helps you understand how users are responding to a comment on Hacker News using natural language processing and machine learning. This client is built using React/Redux and relies on a [node server](https://github.com/ostegm/hn-sentiment-server)
 
+![The app](screenshot.png)
 
-## Thread Page: 
-1. If length of title > X, show subsection?
-2. Boxes around top level stats
-3. How to format and show the sub threads
+## Sentiment Analysis
 
+The main idea with this app was to pass the comments in a hacker news thread through a machine leanring model to calculate "sentiment" - a measure of how positive or negatively people responded to the original post. For this particular project, I chose to rely on [Google's cloud natural language](https://cloud.google.com/natural-language/) service, but this could easily be replaced by another model in the future.
 
-## Misc: 
-1. 404 when thread ID not found.
-2. Recently scored threads?
