@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL, MODEL_TYPE } from '../config';
 import * as actions from '../actions';
 
 describe('Actions', () => {
@@ -45,7 +45,7 @@ describe('fetchThread', () => {
 
     const dispatch = jest.fn();
     return actions.fetchThread(1)(dispatch).then(() => {
-      const url = `${API_BASE_URL}/threads/1`;
+      const url = `${API_BASE_URL}/threads/${MODEL_TYPE}/1`;
       expect(fetch).toHaveBeenCalledWith(url, {'method': 'GET'});
       expect(dispatch).toHaveBeenCalledWith(actions.fetchThreadSuccess(fakeThread));
     });
@@ -67,7 +67,7 @@ describe('fetchRecent', () => {
 
     const dispatch = jest.fn();
     return actions.fetchRecent()(dispatch).then(() => {
-      const url = `${API_BASE_URL}/threads/recent`;
+      const url = `${API_BASE_URL}/threads/${MODEL_TYPE}recent`;
       expect(fetch).toHaveBeenCalledWith(url, {'method': 'GET'});
       expect(dispatch).toHaveBeenCalledWith(actions.fetchRecentSuccess(fakeRecentThreads));
     });
