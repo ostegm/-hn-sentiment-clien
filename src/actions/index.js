@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL, MODEL_TYPE } from '../config';
 import { normalizeResponseErrors } from '../utils';
 
 export const FETCH_THREAD_REQUEST = 'FETCH_THREAD_REQUEST';
@@ -32,7 +32,7 @@ export const fetchThreadError = (error) => ({
 
 export const fetchThread = (threadId) => (dispatch, getState) => {
   dispatch(fetchThreadRequest())
-  return fetch(`${API_BASE_URL}/threads/${threadId}`, {
+  return fetch(`${API_BASE_URL}/threads/${MODEL_TYPE}/${threadId}`, {
     method: 'GET',
   })
     .then(res => normalizeResponseErrors(res))
