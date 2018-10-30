@@ -67,7 +67,7 @@ describe('fetchRecent', () => {
 
     const dispatch = jest.fn();
     return actions.fetchRecent()(dispatch).then(() => {
-      const url = `${API_BASE_URL}/threads/${MODEL_TYPE}recent`;
+      const url = `${API_BASE_URL}/threads/${MODEL_TYPE}/recent`;
       expect(fetch).toHaveBeenCalledWith(url, {'method': 'GET'});
       expect(dispatch).toHaveBeenCalledWith(actions.fetchRecentSuccess(fakeRecentThreads));
     });
