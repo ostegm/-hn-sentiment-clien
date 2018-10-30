@@ -46,7 +46,7 @@ export const fetchThread = (threadId) => (dispatch, getState) => {
 
 export const fetchRecent = () => (dispatch, getState) => {
   dispatch(fetchThreadRequest());
-  return fetch(`${API_BASE_URL}/threads/recent`, {
+  return fetch(`${API_BASE_URL}/threads/${MODEL_TYPE}/recent`, {
     method: 'GET',
   })
     .then(res => normalizeResponseErrors(res))
