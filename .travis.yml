@@ -14,7 +14,7 @@ before_deploy:
 
 deploy:
  provider: script
- script: netlify deploy -p ./build
+ script: netlify deploy --prod --dir=./build
  skip_cleanup: true
  on:
    branch: master
