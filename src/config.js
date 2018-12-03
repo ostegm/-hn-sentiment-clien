@@ -3,4 +3,4 @@ export const API_BASE_URL =
 
 // if MODEL_TYPE == 'gcp' -> use NLP API.
 // if MODEL_TYPE == 'custom' -> use custom model.
-export const MODEL_TYPE = 'custom'
+export const MODEL_TYPE = 'gcp';
